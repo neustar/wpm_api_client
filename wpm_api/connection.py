@@ -51,8 +51,11 @@ class Connection:
         else:
             return self._do_call(uri, "POST")
 
-    def put(self, uri, json):
-        return self._do_call(uri, "PUT", body=json)
+    def put(self, uri, json=None):
+        if json is not None:
+            return self._do_call(uri, "PUT", body=json)
+        else:
+            return self._do_call(uri, "PUT")
 
     def patch(self, uri, json):
         return self._do_call(uri, "PATCH", body=json)
@@ -66,6 +69,9 @@ class Connection:
         else:
             params.update(self._auth())
         r1 = requests.request(method, self.endpoint+uri, params=params, data=body, files=files)
+        # debugging
+        # print r1.url
+        # print r1.status_code
         if r1.status_code == requests.codes.NO_CONTENT:
             return {}
         if self._is_json(r1.text):
