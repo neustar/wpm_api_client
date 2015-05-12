@@ -1,15 +1,15 @@
 from setuptools import setup
 
 setup(
-    name='wpm_client',
-    version='0.1',
+    name='wpm_api_client',
+    version='1.1',
     description='A Python library for the Web Performance Management API',
     url='https://github.com/ultradns/wpm_api_client',
     author='Shane Barbetta',
     author_email='shane@barbetta.me',
     license='Apache License, Version 2.0',
-    keywords='wpm_api',
-    packages=['wpm_api'],
+    keywords='wpm_api_client',
+    packages=['wpm_api_client'],
     install_requires=['requests'],
     classifiers=[
         'Development Status :: 3 - Alpha',
