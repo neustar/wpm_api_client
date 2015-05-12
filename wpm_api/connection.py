@@ -36,6 +36,12 @@ class Connection:
         except ValueError, e:
             return False
         return True
+        
+    def _build_headers(self, content_type):
+        result = {"Accept": "application/json"}
+        if content_type != "":
+            result["Content-Type"] = content_type
+        return result
 
     def get(self, uri, params=None):
         if params is None:
@@ -63,12 +69,12 @@ class Connection:
     def delete(self, uri):
         return self._do_call(uri, "DELETE")
 
-    def _do_call(self, uri, method, params=None, body=None, files=None):
+    def _do_call(self, uri, method, params=None, body=None, files=None, content_type="application/json"):
         if params is None:
             params = self._auth()
         else:
             params.update(self._auth())
-        r1 = requests.request(method, self.endpoint+uri, params=params, data=body, files=files)
+        r1 = requests.request(method, self.endpoint+uri, params=params, data=body, headers=self._build_headers(content_type),files=files)
         # debugging
         # print r1.url
         # print r1.status_code
