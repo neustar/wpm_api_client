@@ -2,9 +2,9 @@ from setuptools import setup
 
 setup(
     name='wpm_api_client',
-    version='1.1',
+    version='1.2',
     description='A Python library for the Web Performance Management API',
-    url='https://github.com/ultradns/wpm_api_client',
+    url='https://github.com/web-performance/wpm_api_client',
     author='Shane Barbetta',
     author_email='shane@barbetta.me',
     license='Apache License, Version 2.0',
