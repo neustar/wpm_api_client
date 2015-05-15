@@ -3,7 +3,7 @@
 # trademarks, service marks or tradenames of NeuStar, Inc. All other
 # product names, company names, marks, logos and symbols may be trademarks
 # of their respective owners.
-import requests, time, md5, json
+import requests, time, hashlib, json
 
 class AuthError(Exception):
     def __init__(self, message):
@@ -22,7 +22,8 @@ class Connection:
     # Authentication
     def _auth(self):
         timestamp = str(int(time.time()))
-        sig = md5.new(self.api_key + self.secret + timestamp).hexdigest()
+        sig_unencoded = self.api_key + self.secret + timestamp
+        sig = hashlib.md5(sig_unencoded.encode()).hexdigest()
         params = {"apikey":self.api_key, "sig":sig}
         r1 = requests.get(self.endpoint+"/load/1.0/echo/credential_check", params=params)
         if r1.status_code == requests.codes.OK:
@@ -33,7 +34,7 @@ class Connection:
     def _is_json(self, rstring):
         try:
             json_object = json.loads(rstring)
-        except ValueError, e:
+        except ValueError as e:
             return False
         return True
         
