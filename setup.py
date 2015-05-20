@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='wpm_api_client',
-    version='2.0',
+    version='2.1',
     description='A Python library for the Web Performance Management API',
     url='https://github.com/web-performance/wpm_api_client',
     author='Shane Barbetta',

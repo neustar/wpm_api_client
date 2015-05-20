@@ -151,6 +151,7 @@ class Monitor:
             update_monitor.update({"browser": kwargs['browser']})
         if "active" in kwargs:
             update_monitor.update({"active": kwargs['active']})
+        return self.connection.put(self.service + "/" + self.id, json.dumps(update_monitor))
             
     def delete(self):
         """Deletes the given monitor, stopping it from monitoring and removing all its monitoring
