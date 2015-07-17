@@ -2,9 +2,9 @@ from setuptools import setup
 
 setup(
     name='wpm_api_client',
-    version='2.1',
+    version='2.3',
     description='A Python library for the Web Performance Management API',
-    url='https://github.com/web-performance/wpm_api_client',
+    url='https://github.com/neustar/wpm_api_client',
     author='Shane Barbetta',
     author_email='shane@barbetta.me',
     license='Apache License, Version 2.0',
@@ -12,7 +12,7 @@ setup(
     packages=['wpm_api'],
     install_requires=['requests'],
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 5 - Production/Stable',
         'Topic :: Utilities',
         'License :: OSI Approved :: Apache Software License',
     ],

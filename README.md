@@ -16,3 +16,8 @@ You can manage this package via pip.
 ```
 pip install wpm_api_client
 ```
+
+License
+========
+
+This software is made available under the Apache 2 license. For more information, see [here](http://www.apache.org/licenses/LICENSE-2.0).
