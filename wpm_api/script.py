@@ -28,15 +28,15 @@ class Script:
         """Retrieves a list of valid scripts."""
         return self.connection.get(self.service)
         
-    def create(self, name, script_body, bypass_validation=False):
-        """Create a custom test script.
+    # def create(self, name, script_body, bypass_validation=False):
+        # """Create a custom test script.
         
-        Arguments:
-        name -- The name of your test script.
-        script_body -- The JavaScript body of your test scenario.
+        # Arguments:
+        # name -- The name of your test script.
+        # script_body -- The JavaScript body of your test scenario.
         
-        """
-        new_script = {"name": name, "scriptBody": script_body, "format": "JavaScript"}
-        if bypass_validation is True:
-            new_script.update({"validationBypassed": True})
-        return self.connection.post(self.service, new_script)
+        # """
+        # new_script = {"name": name, "scriptBody": script_body, "format": "JavaScript"}
+        # if bypass_validation is True:
+            # new_script.update({"validationBypassed": True})
+        # return self.connection.post(self.service, new_script)
