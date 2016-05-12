@@ -63,3 +63,10 @@ class Script:
             raise Exception("Missing id: This API requires a monitor ID be supplied.")
         clone_script = {"id": self.id, "cloneName": name}
         return self.connection.post(self.service + "/clone", json.dumps(clone_script))
+
+    def delete(self):
+        """Deletes the given monitor, stopping it from monitoring and removing all its monitoring
+        data."""
+        if self.id is None:
+            raise Exception("Missing id: This API requires a monitor ID be supplied.")
+        return self.connection.delete(self.service + "/" + self.id)
