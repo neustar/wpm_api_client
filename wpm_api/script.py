@@ -18,7 +18,7 @@ class Script:
         self.connection = connection
         self.id = id
         self.service = "/script/1.0"
-        
+
     def endpoint(self, url):
         """Creates a single-step test script that opens a browser and loads to the given URL.
         
@@ -28,7 +28,11 @@ class Script:
         """
         new_script = {"url": url}
         return self.connection.post(self.service + "/url", json.dumps(new_script))
-        
+
+    def validate(self, id):
+        """Trigger validation of a script."""
+        return self.connection.put('/script/1.0/' + id + '/validate')
+
     def list(self):
         """Retrieves a list of all scripts."""
         return self.connection.get(self.service + "/AllScripts")
@@ -63,10 +67,3 @@ class Script:
             raise Exception("Missing id: This API requires a monitor ID be supplied.")
         clone_script = {"id": self.id, "cloneName": name}
         return self.connection.post(self.service + "/clone", json.dumps(clone_script))
-
-    def delete(self):
-        """Deletes the given monitor, stopping it from monitoring and removing all its monitoring
-        data."""
-        if self.id is None:
-            raise Exception("Missing id: This API requires a monitor ID be supplied.")
-        return self.connection.delete(self.service + "/" + self.id)
