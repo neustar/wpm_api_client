@@ -18,7 +18,7 @@ class Script:
         self.connection = connection
         self.id = id
         self.service = "/script/1.0"
-        
+
     def endpoint(self, url):
         """Creates a single-step test script that opens a browser and loads to the given URL.
         
@@ -28,7 +28,11 @@ class Script:
         """
         new_script = {"url": url}
         return self.connection.post(self.service + "/url", json.dumps(new_script))
-        
+
+    def validate(self, id):
+        """Trigger validation of a script."""
+        return self.connection.put('/script/1.0/' + id + '/validate')
+
     def list(self):
         """Retrieves a list of all scripts."""
         return self.connection.get(self.service + "/AllScripts")
