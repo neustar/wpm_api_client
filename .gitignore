@@ -3,3 +3,6 @@
 *.egg-info
 __pycache__
 *.pyc
+/build/*
+/wpm_api_client.egg-info/*
+/dist/*
