@@ -57,8 +57,8 @@ class Connection:
             params = {}
         return self._do_call(uri, "GET", params=params)
 
-    def post_multi_part(self, uri, files):
-        return self._do_call(uri, "POST", files=files)
+    def post_multi_part(self, uri, files, params=None):
+        return self._do_call(uri, "POST", params=params, files=files, content_type='')
 
     def post(self, uri, json=None):
         if json is not None:

@@ -69,8 +69,29 @@ class Script:
         return self.connection.post(self.service + "/clone", json.dumps(clone_script))
 
     def delete(self):
-        """Deletes the given monitor, stopping it from monitoring and removing all its monitoring
-        data."""
+        """Delete an existing test script."""
         if self.id is None:
             raise Exception("Missing id: This API requires a monitor ID be supplied.")
         return self.connection.delete(self.service + "/" + self.id)
+
+    def retrieve(self):
+        """Retrieve an existing test script."""
+        if self.id is None:
+            raise Exception("Missing id: This API requires a monitor ID be supplied.")
+        return self.connection.get(self.service + "/" + self.id)
+
+    def update(self, name, body, validation_bypassed=False):
+        """Update an existing test script.
+
+        Arguments 
+        name -- The name of the script being uploaded.
+        body -- The script being uploaded.
+
+        Keyword Arguments:
+        validation_bypassed -- Bypass script validation, default is False.
+
+        """
+        if self.id is None:
+            raise Exception("Missing id: This API requires a monitor ID be supplied.")
+        new_script = {"name": name, "scriptBody": body, "id": self.id, "validationBypassed": validation_bypassed}
+        return self.connection.put(self.service + "/" + self.id, json.dumps(new_script))

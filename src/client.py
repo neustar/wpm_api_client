@@ -19,6 +19,7 @@ from .maintenance import Maintenance
 from .script import Script
 from .alert import Alert
 from .rum import Rum
+from .file import File
 
 class Client:
     def __init__(self, api_key, secret):
@@ -51,3 +52,6 @@ class Client:
         
     def rum(self, id=None):
         return Rum(self.connection, id)
+
+    def file(self, id=None):
+        return File(self.connection, id)
